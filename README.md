@@ -4,12 +4,12 @@ This is a sample proof-of-context of running the [Lumen microframework](https://
 
 # Components
 
-The project consists of a simple set of API endpoints that interact with an RDS MySQL instance in a VPC.
+The project consists of a simple set of API endpoints that instantiate and interact with an RDS MySQL instance in a VPC.
 The example is based on the Serverless framework for easier configuration of the functions and resources.
 
 # Deploying
 
-- Install the Serverless framework.
+- Install the Serverless framework: https://serverless.com/framework/docs/getting-started/
 - Clone the repository.
 - Configure your SLS API key, or your AWS credentials directly via `aws configure`.
 - Execute `sls deploy`.
