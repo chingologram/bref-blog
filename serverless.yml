@@ -7,6 +7,13 @@ provider:
     region: us-east-1
     profile: default
     runtime: provided
+    environment:
+        DB_HOST:
+            Fn::GetAtt: [MySqlRDSInstance, Endpoint.Address]
+        DB_PORT: 3306
+        DB_DATABASE: ${param:db_name}
+        DB_USERNAME: ${param:db_user}
+        DB_PASSWORD: ${param:db_pass}
 
 plugins:
     - ./vendor/bref/bref
@@ -73,26 +80,33 @@ resources:
                   CidrIp: "0.0.0.0/0"
 
 functions:
+    artisan:
+        handler: artisan
+        timeout: 120 # in seconds
+        layers:
+            - ${bref:layer.php-73} # PHP
+            - ${bref:layer.console} # The "console" layer
+        vpc:
+            subnetIds:
+                - Ref: ServerlessSubnetA
+                - Ref: ServerlessSubnetB
+            securityGroupIds:
+                - !GetAtt ServerlessSecurityGroup.GroupId
     api:
         handler: public/index.php
         description: ''
-        environment:
-            DB_HOST:
-                Fn::GetAtt: [MySqlRDSInstance, Endpoint.Address]
-            DB_PORT: 3306
-            DB_DATABASE: ${param:db_name}
-            DB_USERNAME: ${param:db_user}
-            DB_PASSWORD: ${param:db_pass}
         timeout: 28 # in seconds (API Gateway has a timeout of 29 seconds)
         layers:
             - ${bref:layer.php-73-fpm}
         events:
             -   http: 'ANY /'
+                private: true
             -   http: 'ANY /{proxy+}'
+                private: true
         vpc:
             subnetIds:
-                - !GetAtt ServerlessSubnetA.SubnetId
-                - !GetAtt ServerlessSubnetB.SubnetId
+                - Ref: ServerlessSubnetA
+                - Ref: ServerlessSubnetB
             securityGroupIds:
                 - !GetAtt ServerlessSecurityGroup.GroupId
 
