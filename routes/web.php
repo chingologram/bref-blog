@@ -1,6 +1,6 @@
 <?php
 
-use Log;
+use App\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,5 +15,5 @@ use Log;
 
 $router->get('/', function () use ($router) {
     Log::info('Request received');
-    return $router->app->version();
+    return User::all();
 });
