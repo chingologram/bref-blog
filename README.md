@@ -5,7 +5,7 @@ This is a sample proof-of-context of running the [Lumen microframework](https://
 # Components
 
 The project consists of a simple set of API endpoints that instantiate and interact with an RDS MySQL instance in a VPC.
-The example is based on the Serverless framework for easier configuration of the functions and resources.
+The example is based on the Serverless framework for easier configuration of the AWS functions and resources, and easier transition to multi-cloud.
 
 # Deploying
 
