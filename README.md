@@ -56,4 +56,4 @@ frameworks like Slim, or ExpressJS. Included functionality:
 - Logging
 
 Solutions for cold starts are similar to those for other runtimes: hitting the endpoint periodically to keep containers alive.
-An easy workaround is to use the ![Serverless warmup plugin](https://serverless.com/plugins/serverless-plugin-warmup/).
+An easy workaround is to use the [Serverless warmup plugin](https://serverless.com/plugins/serverless-plugin-warmup/).
