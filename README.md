@@ -43,7 +43,6 @@ As per benchmark on https://mikhail.io/serverless/coldstarts/aws/
 </center>
 
 
-
 Note that Lumen already comes with much of the Laravel tooling, which makes it less likely to require extra packages in comparison to other skinned down
 frameworks like Slim, or ExpressJS. Included functionality:
 
@@ -56,4 +55,5 @@ frameworks like Slim, or ExpressJS. Included functionality:
 - Dependency injection
 - Logging
 
-
+Solutions for cold starts are similar to those for other runtimes: hitting the endpoint periodically to keep containers alive.
+An easy workaround is to use the ![Serverless warmup plugin](https://serverless.com/plugins/serverless-plugin-warmup/).
