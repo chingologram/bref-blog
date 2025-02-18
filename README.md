@@ -1,6 +1,6 @@
 # Lumen Blog example on Bref POC
 
-This is a sample proof-of-context of running the [Lumen microframework](https://lumen.laravel.com/) on [Bref](https://bref.sh/).
+This is a sample proof-of-context of running the [Laravel/Lumen microframework](https://lumen.laravel.com/) on [Bref](https://bref.sh/).
 
 # Components
 
